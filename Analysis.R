@@ -19,13 +19,11 @@ giftsNoOutliers <- giftData$`Gift Amount`[!giftData$`Gift Amount` %in% boxplot.s
 boxplot(giftData$`Gift Amount`,outline=FALSE)
 mean(giftsNoOutliers)
 
-#Alumni Cities
+#Alumni Cities Analysis
 alumniCity <- count(na.omit(bioData$City))
-bigAlumCity<-alumniCity[!(alumniCity$freq < 9),] #Outlier in City Size
-bigAlumCity100<-alumniCity[!(alumniCity$freq < 100),] #Cities with >100 ppl
-bigAlumCity1000<-alumniCity[!(alumniCity$freq < 1000),] #Cities with >1000 ppl from data
-bigAlumCity1000BarChart <- ggplot(bigAlumCity1000, aes(x, freq))+geom_bar(stat = "identity")
-bigAlumCity1000BarChart
-bigAlumCity100BarChart <- ggplot(bigAlumCity100, aes(x, freq))+geom_bar(stat = "identity")
-bigAlumCity100BarChart
+#You can use this with any number of alumni/friends in cities, but this was the most revealing
+#for right now.
+bigAlumCity500<-alumniCity[!(alumniCity$freq < 500),] #Cities with >500 ppl from data
+bigAlumCity500BarChart <- ggplot(bigAlumCity500, aes(x, freq))+geom_bar(stat = "identity")
+bigAlumCity500BarChart
 
